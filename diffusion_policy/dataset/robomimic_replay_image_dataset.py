@@ -149,7 +149,7 @@ class RobomimicReplayImageDataset(BaseImageDataset):
         normalizer = LinearNormalizer()
 
         # action
-        stat = array_to_stats(self.replay_buffer['action'])
+        stat = array_to_stats(self.replay_buffer['action']) # 10(3+6+1) dim action
         if self.abs_action:
             if stat['mean'].shape[-1] > 10:
                 # dual arm

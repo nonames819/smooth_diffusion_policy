@@ -115,7 +115,7 @@ def robomimic_abs_action_only_normalizer_from_stat(stat):
     })
 
     def get_pos_param_info(stat, output_max=1, output_min=-1, range_eps=1e-7):
-        # -1, 1 normalization
+        # -1, 1 normalization for first 3 dims
         input_max = stat['max']
         input_min = stat['min']
         input_range = input_max - input_min
@@ -129,6 +129,7 @@ def robomimic_abs_action_only_normalizer_from_stat(stat):
 
     
     def get_other_param_info(stat):
+        # no normalization for other dims
         example = stat['max']
         scale = np.ones_like(example)
         offset = np.zeros_like(example)
