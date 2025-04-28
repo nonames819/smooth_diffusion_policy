@@ -198,7 +198,7 @@ class RobomimicReplayImageDataset(BaseImageDataset):
         # since the rest will be discarded anyway.
         # when self.n_obs_steps is None
         # this slice does nothing (takes all)
-        T_slice = slice(self.n_obs_steps)
+        T_slice = slice(self.n_obs_steps) # slice(None, 2, None) start,end,step
 
         obs_dict = dict()
         for key in self.rgb_keys:
@@ -216,7 +216,7 @@ class RobomimicReplayImageDataset(BaseImageDataset):
         torch_data = {
             'obs': dict_apply(obs_dict, torch.from_numpy),
             'action': torch.from_numpy(data['action'].astype(np.float32))
-        }
+        } # the length of the action equals the length of sliced demo
         return torch_data
 
 
