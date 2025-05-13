@@ -142,3 +142,6 @@ dmypy.json
 # ckpt 
 ckpt
 ckpt/
+
+# pycharm
+.idea/
