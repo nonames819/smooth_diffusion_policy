@@ -17,14 +17,16 @@ import dill
 import wandb
 import json
 from diffusion_policy.workspace.base_workspace import BaseWorkspace
+from datetime import datetime
 
 @click.command()
 @click.option('-c', '--checkpoint', required=True)
 @click.option('-o', '--output_dir', required=True)
 @click.option('-d', '--device', default='cuda:0')
 def main(checkpoint, output_dir, device):
-    if os.path.exists(output_dir):
-        click.confirm(f"Output path {output_dir} already exists! Overwrite?", abort=True)
+    # if os.path.exists(output_dir):
+    #     click.confirm(f"Output path {output_dir} already exists! Overwrite?", abort=True)
+    output_dir = f'{output_dir}/{datetime.now().strftime("%Y.%m.%d/%H.%M.%S")}'
     pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
     
     # load checkpoint

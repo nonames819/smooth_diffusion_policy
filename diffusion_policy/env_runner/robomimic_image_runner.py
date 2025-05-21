@@ -118,7 +118,6 @@ class RobomimicImageRunner(BaseImageRunner):
                 n_action_steps=n_action_steps,
                 max_episode_steps=max_steps
             )
-        
         # For each process the OpenGL context can only be initialized once
         # Since AsyncVectorEnv uses fork to create worker process,
         # a separate env_fn that does not create OpenGL context (enable_render=False)
@@ -214,7 +213,7 @@ class RobomimicImageRunner(BaseImageRunner):
             env_seeds.append(seed)
             env_prefixs.append('test/')
             env_init_fn_dills.append(dill.dumps(init_fn))
-
+        
         env = AsyncVectorEnv(env_fns, dummy_env_fn=dummy_env_fn)
         # env = SyncVectorEnv(env_fns)
 

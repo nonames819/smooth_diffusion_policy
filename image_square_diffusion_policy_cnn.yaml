@@ -8,7 +8,7 @@ checkpoint:
     mode: max
     monitor_key: test_mean_score
 dataloader:
-  batch_size: 256
+  batch_size: 1024
   num_workers: 8
   persistent_workers: false
   pin_memory: true
@@ -28,16 +28,16 @@ logging:
   group: null
   id: null
   mode: online
-  name: 2025.05.07-22.31.34_train_diffusion_unet_hybrid_square_image
-  project: diffusion_policy_train
+  name: 2025.05.20-10.21.11_train_diffusion_unet_hybrid_square_image
+  project: 53.50-diffusion_policy_train
   resume: true
   tags:
   - train_diffusion_unet_hybrid
   - square_image
   - default
 multi_run:
-  run_dir: data/outputs/2025.05.07/22.31.34_train_diffusion_unet_hybrid_square_image
-  wandb_name_base: 2025.05.07-22.31.34_train_diffusion_unet_hybrid_square_image
+  run_dir: data/outputs/2025.05.20/10.21.11_train_diffusion_unet_hybrid_square_image
+  wandb_name_base: 2025.05.20-10.21.11_train_diffusion_unet_hybrid_square_image
 n_action_steps: 8
 n_latency_steps: 0
 n_obs_steps: 2
