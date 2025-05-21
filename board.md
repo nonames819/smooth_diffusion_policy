@@ -24,3 +24,5 @@ python eval_test_time.py --checkpoint ckpt/2025.05.08/00.57.49_train_diffusion_u
 python eval.py --checkpoint ckpt/official/data/experiments/low_dim/square_ph/diffusion_policy_cnn/train_0/checkpoints/epoch=1750-test_mean_score=1.000.ckpt --output_dir ckpt/eval_output/square_eval_output --device cuda:0
 
 **Remember to change the project name of wandb, the val freq and the ckpt freq**
+
+**In some specific systems, the way how robomimic initial should be modified, especially how mujoco check the device for rendering, file: [PREFIX]/envs/robodiff/lib/python3.9/site-packages/robomimic/envs/env_robosuite.py: line 73**
