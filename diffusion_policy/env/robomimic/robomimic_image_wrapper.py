@@ -14,9 +14,7 @@ class RobomimicImageWrapper(gym.Env):
         render_obs_key='agentview_image',
         ):
 
-        print("before env")
         self.env = env
-        print("after env")
         self.render_obs_key = render_obs_key
         self.init_state = init_state
         self.seed_state_map = dict()

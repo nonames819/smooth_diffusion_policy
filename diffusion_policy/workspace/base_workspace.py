@@ -23,7 +23,7 @@ class BaseWorkspace:
     def output_dir(self):
         output_dir = self._output_dir
         if output_dir is None:
-            output_dir = HydraConfig.get().runtime.output_dir
+            output_dir = HydraConfig.get().runtime.output_dir # chd: dir here
         return output_dir
     
     def run(self):

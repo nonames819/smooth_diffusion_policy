@@ -1,0 +1,2 @@
+# Data
+原始action都是len=7的，在convert2replaybuffer的时候根据选择的rot_transformer统一转成所需形式

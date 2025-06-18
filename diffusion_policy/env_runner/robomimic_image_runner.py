@@ -22,7 +22,7 @@ from diffusion_policy.env.robomimic.robomimic_image_wrapper import RobomimicImag
 import robomimic.utils.file_utils as FileUtils
 import robomimic.utils.env_utils as EnvUtils
 import robomimic.utils.obs_utils as ObsUtils
-
+import time
 
 def create_env(env_meta, shape_meta, enable_render=True):
     modality_mapping = collections.defaultdict(list)
@@ -290,7 +290,11 @@ class RobomimicImageRunner(BaseImageRunner):
 
                 # run policy
                 with torch.no_grad():
+                    # start_time = time.time()
                     action_dict = policy.predict_action(obs_dict)
+                    # end_time = time.time()
+                    # print("policy scheduler: ", policy.noise_scheduler)
+                    # print(f"Time taken for predict_action: {end_time - start_time} seconds")
 
                 # device_transfer
                 np_action_dict = dict_apply(action_dict,
