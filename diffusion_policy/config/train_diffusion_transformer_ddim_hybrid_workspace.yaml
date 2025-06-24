@@ -125,7 +125,7 @@ training:
 logging:
   project: 53.50-diffusion_policy_train
   resume: True
-  mode: offline
+  mode: online
   name: ${now:%Y.%m.%d-%H.%M.%S}_${name}_${task_name}
   tags: ["${name}", "${task_name}", "${exp_name}"]
   id: null

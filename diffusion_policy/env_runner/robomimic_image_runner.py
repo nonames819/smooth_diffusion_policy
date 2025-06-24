@@ -308,7 +308,7 @@ class RobomimicImageRunner(BaseImageRunner):
                 # step env
                 env_action = action
                 if self.abs_action:
-                    env_action = self.undo_transform_action(action)
+                    env_action = self.undo_transform_action(action) # chd: just change rot
 
                 obs, reward, done, info = env.step(env_action)
                 done = np.all(done)

@@ -284,10 +284,14 @@ def _convert_robomimic_to_replay(store, shape_meta, dataset_path, abs_action, ro
             dtype=np.int64, compressor=None, overwrite=True)
 
         # save lowdim data
-        for key in tqdm(lowdim_keys + ['action'], desc="Loading lowdim data"):
+        lowdim_keys = lowdim_keys + (['action_abs'] if abs_action else ['action'])
+        for key in tqdm(lowdim_keys, desc="Loading lowdim data"):
             data_key = 'obs/' + key
             if key == 'action':
                 data_key = 'actions'
+            elif key == 'action_abs':
+                key = 'action'   
+                data_key = 'actions_abs'
             this_data = list()
             for i in range(len(demos)):
                 demo = demos[f'demo_{i}']

@@ -24,10 +24,15 @@ from datetime import datetime
 @click.option('-o', '--output_dir', required=True)
 @click.option('-d', '--device', default='cuda:0')
 def main(checkpoint, output_dir, device):
-    # if os.path.exists(output_dir):
-    #     click.confirm(f"Output path {output_dir} already exists! Overwrite?", abort=True)
-    output_dir = f'{output_dir}/{datetime.now().strftime("%Y.%m.%d/%H.%M.%S")}'
-    pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+    output_dir = os.path.join(os.path.dirname(checkpoint), output_dir, os.path.basename(checkpoint).replace('.ckpt', ''))
+
+    if os.path.exists(output_dir):
+        click.confirm(f"Output path {output_dir} already exists! Overwrite?", abort=True)
+    else:
+        os.makedirs(output_dir, exist_ok=True)
+    # output_dir = f'{output_dir}/{datetime.now().strftime("%Y.%m.%d/%H.%M.%S")}'
+    # pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
     
     # load checkpoint
     payload = torch.load(open(checkpoint, 'rb'), pickle_module=dill)
