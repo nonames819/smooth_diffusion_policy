@@ -162,7 +162,7 @@ class RobomimicImageRunner(BaseImageRunner):
             for i in range(n_train):
                 train_idx = train_start_idx + i
                 enable_render = i < n_train_vis
-                init_state = f[f'data/demo_{train_idx}/states'][0]
+                init_state = f[f'data/demo_{train_idx}/states'][0] # 测试时是否使用训练集中的场景进行初始化
 
                 def init_fn(env, init_state=init_state, 
                     enable_render=enable_render):
@@ -271,7 +271,7 @@ class RobomimicImageRunner(BaseImageRunner):
             policy.reset()
 
             env_name = self.env_meta['env_name']
-            pbar = tqdm.tqdm(total=self.max_steps, desc=f"Eval {env_name}Image {chunk_idx+1}/{n_chunks}", 
+            pbar = tqdm.tqdm(total=self.max_steps, desc=f"Eval {env_name} Image {chunk_idx+1}/{n_chunks}", 
                 leave=False, mininterval=self.tqdm_interval_sec)
             
             done = False
